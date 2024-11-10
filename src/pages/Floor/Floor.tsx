@@ -13,12 +13,12 @@ const Floor: React.FC = () => {
 
   const thisFloor = getFloorByIndex(floorIndex);
   
-  const currentRole = useSelector((state: { role: string }) => state.role);
+  const currentRole = useSelector((state: { role: { role: string} }) => state.role.role);
   const thisFloorActivity: string = thisFloor?.activity || "";
   const activities = getListOfActivities();
 
   const handleClick = () => {
-    const isVerified = useIsVerified({ activity: thisFloorActivity,role :{role: currentRole}, activities });
+    const isVerified = useIsVerified({ activity: thisFloorActivity, role: { role: currentRole}, activities });
     if (isVerified!) {
       alert(`You are currently ${thisFloorActivity}`);
     } else {
