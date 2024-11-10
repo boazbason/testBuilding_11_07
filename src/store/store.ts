@@ -4,8 +4,8 @@ import floorReduser from '../store/floorreducer'
 
 export const store = configureStore({
     reducer: {
-        roolRed: roolReduser,
-        floorRed: floorReduser
+        role: roolReduser,
+        floorAccess: floorReduser
     }
 })
 

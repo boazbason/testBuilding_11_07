@@ -4,15 +4,21 @@ import { useSelector } from "react-redux";
 import useBuildingData from "../../utils/BuildingDataProvider";
 import "./Layout.css";
 const Layout: React.FC<{children:ReactNode}> = ({children}) => {
+  
   const floorAccess = useSelector(
     (state: {
       floorAccess: {
         floorAccess: [boolean, boolean, boolean, boolean, boolean];
+        
       };
     }) => state.floorAccess.floorAccess
+    
   );
+  
+  
   const { getFloorByIndex } = useBuildingData();
   return (
+    
     <div className="layout-page">
       <nav className="navbar">
         <h1>מגדל נמרודי</h1>

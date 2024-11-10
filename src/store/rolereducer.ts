@@ -2,11 +2,11 @@ import { compose, createSlice, PayloadAction } from '@reduxjs/toolkit'
 import listRols from '../data/roles.json'
 
 interface counterStateType {
-    currentRole: string
+    role: string
 }
 
 const initialState: counterStateType = {
-    currentRole: listRols[0]
+    role: listRols[0]
     
 }
 
@@ -17,7 +17,7 @@ export const RoolSlice = createSlice({
         setRole: (state, action: PayloadAction<{ indexRool: number }>) => {
             const index = listRols[action.payload.indexRool]
             if(index){
-                state.currentRole = index
+                state.role = index;                
             }
         }
         }

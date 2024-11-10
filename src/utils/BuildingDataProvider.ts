@@ -1,32 +1,28 @@
 import { useState, useEffect } from 'react';
+import building from '../data/building.json'
 
 export interface Floor {
   name: string;
   soldiers: number;
   purpose: string;
   description: string;
-  activity:string
+  activity: string
 }
 
 const useBuildingData = () => {
   const [buildingData, setBuildingData] = useState<Floor[]>([]);
 
   useEffect(() => {
-    const uploadBuildingData = async () => {
-      const allFloors:Floor[] = await import ('../data/building.json');
-      setBuildingData(allFloors);
-    }
-    uploadBuildingData();
-    
+        setBuildingData(building)
   }, [])
-  
 
-  const getFloorByIndex = (floorIndex:number): Floor | undefined =>
-  {
+
+  const getFloorByIndex = (floorIndex: number): Floor | undefined => {
+
     return buildingData[floorIndex]
   }
-  const getListOfActivities = ():string[]=>{
-    return buildingData.map((floor)=>floor.activity)
+  const getListOfActivities = (): string[] => {
+    return buildingData.map((floor) => floor.activity)
   }
   return {
     buildingData,

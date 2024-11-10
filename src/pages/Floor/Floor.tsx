@@ -6,18 +6,20 @@ import './Floor.css';
 
 const Floor: React.FC = () => {
   const { index } = useParams<{ index: string }>();
+  
   const floorIndex = parseInt(index || "0");
   const { getFloorByIndex, getListOfActivities } = useBuildingData();
   const navigate = useNavigate();
 
   const thisFloor = getFloorByIndex(floorIndex);
+  
   const currentRole = useSelector((state: { role: string }) => state.role);
   const thisFloorActivity: string = thisFloor?.activity || "";
   const activities = getListOfActivities();
 
   const handleClick = () => {
     const isVerified = useIsVerified({ activity: thisFloorActivity, role: currentRole, activities });
-    if (isVerified) {
+    if (isVerified!) {
       alert(`You are currently ${thisFloorActivity}`);
     } else {
       navigate("/forbidden");
@@ -43,6 +45,7 @@ const Floor: React.FC = () => {
       </section>
 
       <button className="access-button" onClick={handleClick}>
+        
         {thisFloorActivity}
       </button>
     </div>
